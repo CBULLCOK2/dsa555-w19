@@ -141,11 +141,14 @@ green grapes
 pomegranate
 pears
 
-level 2 header here
 
 This next section is completely optional.  You do not need to do it, but you may wish to do it.
 
+end of compulsory portion of lab
 
+Level 2 header: LaTex
 
+volume of sphere = 4/3 pi r^3
 
+1 + 2 + 3 + 4 +...n = (use summation notation here) = ((n)(n+1))/2
 
