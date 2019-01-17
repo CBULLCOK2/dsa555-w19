@@ -21,8 +21,8 @@ level 3 header here
 item 1 in an unordered list
 item 2 in an unordered list
 item 3 in an unordered list
-item 1 in an unordered sublist of under item 3
-item 2 in an unordered sublist of under item 3
+item 1 in an ordered sublist of under item 3
+item 2 in an ordered sublist of under item 3
 item 4 in an unordered list
 
 level 2 header here
