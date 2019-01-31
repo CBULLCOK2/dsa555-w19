@@ -21,8 +21,8 @@ level 3 header here
 item 1 in an unordered list
 item 2 in an unordered list
 item 3 in an unordered list
-item 1 in an unordered sublist of under item 3
-item 2 in an unordered sublist of under item 3
+item 1 in an ordered sublist of under item 3
+item 2 in an ordered sublist of under item 3
 item 4 in an unordered list
 
 level 2 header here
@@ -90,35 +90,19 @@ var AnimatedCode = function(spec){
 	that.setFontColour = function(c){
 		fontColour_=c;
 	}
-
-	that.setMultiHighLighter = function (params){
-		if(params.sln <= lines_.length && params.eln <= lines_.length){
-			highlighterStart_=params.sln-1;
-			highlighterEnd_=params.eln-1;
-		}
-	}
-	that.setVisibility = function (vis){
-		isVisible_=vis;
-	}
-	that.hide = function (){
-		isVisible_=false;
-	}
-	that.show = function (){
-		isVisible_=true;
-	}
-	that.isVisible = function (){
-		return isVisible_;
-	}
-	that.process = function(ai){
-		ai.instruction();
-		ai.setCompleted(true);
-	}
-
 	return that;
-
 }
 
+level 2 header here
 
+create a link to the course repo with the text shown as "dsa555 repo"
+
+
+level 2 header here
+
+the following link contains a google docs spreadsheet with graph.  Make a copy of the sheet to your own account, then change one of the fruits to something other fruit and embed the graph as an image in that spreadsheet into this web page
+
+https://docs.google.com/spreadsheets/d/1-6CEwST1u9qT8F-w9OLDcyEiMFlCJ40b3QaeplIogxc/edit?usp=sharing
 
 level 4 header here
 
@@ -141,11 +125,16 @@ green grapes
 pomegranate
 pears
 
-level 2 header here
 
 This next section is completely optional.  You do not need to do it, but you may wish to do it.
 
+end of compulsory portion of lab
 
+Level 2 header: LaTex
 
+(see sample output)
 
+volume of sphere = 4/3 pi r^3
+
+1 + 2 + 3 + 4 +...n = (use summation notation here) = ((n)(n+1))/2
 
