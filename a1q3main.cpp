@@ -11,7 +11,7 @@
 /*                                                                   */
 /* To compile:                                                       */
 /*                                                                   */
-/*      g++ a1q2main.cpp maze.cpp a1q2.cpp -std=c++0x                */
+/*      g++ a1q3main.cpp maze.cpp a1q3.cpp -std=c++0x                */
 /*                                                                   */
 /* Aside from indicating if you passed the 6 tests, it will also     */
 /* produce a result file named  test#result.txt file.  (the #        */
