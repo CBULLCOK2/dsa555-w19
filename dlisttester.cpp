@@ -11,5 +11,9 @@ int main(void){
 		std::cout << *it << std::endl;
 		it++;
 	}
+	while(it!=list.cbegin()){
+		it--;
+		std::cout << *it << std::endl;
+	}
 	return 0;
 }

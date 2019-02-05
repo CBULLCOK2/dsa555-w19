@@ -27,10 +27,12 @@ public:
 	class const_iterator{
 		friend class DList;
 		Node* curr_;
+		const DList* myList_;
 
 	protected:
-		const_iterator(Node* curr){
+		const_iterator(Node* curr,const DList* thelist){
 			curr_=curr;
+			myList_=thelist;
 		}
 	public:
 		const_iterator(){
@@ -49,6 +51,23 @@ public:
 			//return old saved version of object
 			return old;
 		}  
+		const_iterator operator--(int){
+			//x--
+			//save current object
+			const_iterator old = *this;  
+			//change object
+			if(curr_==nullptr){
+				if(myList_){
+					curr_=myList_->tail_;
+				}
+			}
+			else{
+				curr_=curr_->prev_;
+			}
+			//return old saved version of object
+			return old;
+		}  
+
 		const T& operator*() const{
 			return curr_->data_;
 		}
@@ -63,10 +82,10 @@ public:
 
 	};
 	const_iterator cbegin() const{
-		return const_iterator(head_);
+		return const_iterator(head_,this);
 	}
 	const_iterator cend() const{
-		return const_iterator(nullptr);
+		return const_iterator(nullptr,this);
 	}
 
 
@@ -78,7 +97,7 @@ public:
 
 template <typename T>
 void DList<T>::push_front(const T& data){
-    Node* nn = new Node(data,nullptr,head_);
+    Node* nn = new Node(data,head_,nullptr);
     if(head_){
         head_->prev_=nn;
     }
