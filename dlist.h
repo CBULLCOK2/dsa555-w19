@@ -33,11 +33,31 @@ public:
 			curr_=curr;
 		}
 	public:
-		const_iterator();
-		const_iterator operator++();     //++x
-		const_iterator operator++(int);  //x++
-		const T& operator*() const;
-
+		const_iterator(){
+			curr_=nullptr;
+		}
+		const_iterator operator++(){
+			curr_=curr_->next_;
+			return *this;
+		}     //++x
+		const_iterator operator++(int){
+			//x++
+			//save current object
+			const_iterator old = *this;  
+			//change object
+			curr_=curr_->next_;
+			//return old saved version of object
+			return old;
+		}  
+		const T& operator*() const{
+			return curr_->data_;
+		}
+		bool operator==(const_iterator rhs){
+			return (curr_ == rhs.curr_);
+		}
+		bool operator!=(const_iterator rhs){
+			return (curr_ != rhs.curr_);
+		}
 	};
 	class iterator:public const_iterator{
 
@@ -45,7 +65,9 @@ public:
 	const_iterator cbegin() const{
 		return const_iterator(head_);
 	}
-	const_iterator cend() const;
+	const_iterator cend() const{
+		return const_iterator(nullptr);
+	}
 
 
 };
@@ -159,7 +181,7 @@ void Sentinel<T>::pop_front(){
 
 template <typename T>
 void Sentinel<T>::print() const{
-
+}
 template <typename T>
 void Sentinel<T>::reversePrint() const{
 
