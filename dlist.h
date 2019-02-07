@@ -71,14 +71,56 @@ public:
 		const T& operator*() const{
 			return curr_->data_;
 		}
-		bool operator==(const_iterator rhs){
+		bool operator==(const_iterator rhs) const{
 			return (curr_ == rhs.curr_);
 		}
-		bool operator!=(const_iterator rhs){
+		bool operator!=(const_iterator rhs) const{
 			return (curr_ != rhs.curr_);
 		}
 	};
 	class iterator:public const_iterator{
+	protected:
+		iterator(Node* curr,const DList* thelist):const_iterator(curr,thelist){
+
+		}
+	public:
+		iterator():const_iterator(){
+			this->curr_=nullptr;
+		}
+		iterator operator++(){
+			this->curr_=this->curr_->next_;
+			return *this;
+		}     //++x
+		iterator operator++(int){
+			//x++
+			//save current object
+			iterator old = *this;  
+			//change object
+			this->curr_=this->curr_->next_;
+			//return old saved version of object
+			return old;
+		}  
+		iterator operator--(int){
+			//x--
+			//save current object
+			iterator old = *this;  
+			//change object
+			if(this->curr_==nullptr){
+				if(this->myList_){
+					this->curr_=this->myList_->tail_;
+				}
+			}
+			else{
+				this->curr_=this->curr_->prev_;
+			}
+			//return old saved version of object
+			return old;
+		}  
+
+		T& operator*(){
+			return this->curr_->data_;
+		}
+
 
 	};
 	const_iterator cbegin() const{
@@ -88,6 +130,12 @@ public:
 		return const_iterator(nullptr,this);
 	}
 
+	iterator begin() const{
+		return iterator(head_,this);
+	}
+	iterator end() const{
+		return iterator(nullptr,this);
+	}
 
 };
 
