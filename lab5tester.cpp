@@ -4,8 +4,8 @@
 bool bracketCheck(const std::string& s);
 int main(void){
 	std::string tests[5]={
-		"a(b)c[d]ef",
-		"aa[bcd(efg{hij}k[lm]no)p]qrs",
+		"a(b)c[d]ef{g}",
+		"a[(a[bcd(efg{h[i]j}k{[(l)m]}n{}o)p])[q]]rs",
 		"a(b)c]d",
 		"[[]",
 		"aa(bb{cc)dd}ee"
