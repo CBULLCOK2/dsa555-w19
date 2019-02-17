@@ -27,26 +27,115 @@ public:
 	class const_iterator{
 		friend class DList;
 		Node* curr_;
+		const DList* myList_;
 
 	protected:
-		const_iterator(Node* curr){
+		const_iterator(Node* curr,const DList* thelist){
 			curr_=curr;
+			myList_=thelist;
 		}
 	public:
-		const_iterator();
-		const_iterator operator++();     //++x
-		const_iterator operator++(int);  //x++
-		const T& operator*() const;
+		const_iterator(){
+			curr_=nullptr;
+		}
+		const_iterator operator++(){
+			curr_=curr_->next_;
+			return *this;
+		}     //++x
+		const_iterator operator++(int){
+			//x++
+			//save current object
+			const_iterator old = *this;  
+			//change object
+			curr_=curr_->next_;
+			//return old saved version of object
+			return old;
+		}  
+		const_iterator operator--(int){
+			//x--
+			//save current object
+			const_iterator old = *this;  
+			//change object
+			if(curr_==nullptr){
+				if(myList_){
+					curr_=myList_->tail_;
+				}
+			}
+			else{
+				curr_=curr_->prev_;
+			}
+			//return old saved version of object
+			return old;
+		}  
 
+		const T& operator*() const{
+			return curr_->data_;
+		}
+		bool operator==(const_iterator rhs) const{
+			return (curr_ == rhs.curr_);
+		}
+		bool operator!=(const_iterator rhs) const{
+			return (curr_ != rhs.curr_);
+		}
 	};
 	class iterator:public const_iterator{
+	protected:
+		iterator(Node* curr,const DList* thelist):const_iterator(curr,thelist){
+
+		}
+	public:
+		iterator():const_iterator(){
+			this->curr_=nullptr;
+		}
+		iterator operator++(){
+			this->curr_=this->curr_->next_;
+			return *this;
+		}     //++x
+		iterator operator++(int){
+			//x++
+			//save current object
+			iterator old = *this;  
+			//change object
+			this->curr_=this->curr_->next_;
+			//return old saved version of object
+			return old;
+		}  
+		iterator operator--(int){
+			//x--
+			//save current object
+			iterator old = *this;  
+			//change object
+			if(this->curr_==nullptr){
+				if(this->myList_){
+					this->curr_=this->myList_->tail_;
+				}
+			}
+			else{
+				this->curr_=this->curr_->prev_;
+			}
+			//return old saved version of object
+			return old;
+		}  
+
+		T& operator*(){
+			return this->curr_->data_;
+		}
+
 
 	};
 	const_iterator cbegin() const{
-		return const_iterator(head_);
+		return const_iterator(head_,this);
 	}
-	const_iterator cend() const;
+	const_iterator cend() const{
+		return const_iterator(nullptr,this);
+	}
 
+	iterator begin() const{
+		return iterator(head_,this);
+	}
+	iterator end() const{
+		return iterator(nullptr,this);
+	}
 
 };
 
@@ -56,7 +145,7 @@ public:
 
 template <typename T>
 void DList<T>::push_front(const T& data){
-    Node* nn = new Node(data,nullptr,head_);
+    Node* nn = new Node(data,head_,nullptr);
     if(head_){
         head_->prev_=nn;
     }
@@ -159,7 +248,7 @@ void Sentinel<T>::pop_front(){
 
 template <typename T>
 void Sentinel<T>::print() const{
-
+}
 template <typename T>
 void Sentinel<T>::reversePrint() const{
 
