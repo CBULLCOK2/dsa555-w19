@@ -585,10 +585,7 @@ int main(void){
 			printLists(recCopy3,mirror,15);
 			#endif
 		}
-		if(passtest && it != it2){
-			passtest = false;
-			cout << "Error 15b: Move constructor is suppose to \"steal\" the data from rhs" << endl;
-		}
+
 	}
 
 	if(passtest){
@@ -605,10 +602,7 @@ int main(void){
 			printLists(recCopy3,mirror,15);
 			#endif
 		}
-		if(passtest && it != it2){
-			passtest = false;
-			cout << "Error 16b: Move constructor is suppose to \"steal\" the data from rhs" << endl;
-		}
+
 	}
 	if(passtest){
 		numPassed++;
