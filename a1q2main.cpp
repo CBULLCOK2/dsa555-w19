@@ -1,11 +1,12 @@
 /*********************************************************************/
 /*                                                                   */
 /* Tester for a sorted list                                      	 */
-/* Version 1.0                                                       */
+/* Version 1.1                                                       */
 /* To compile:                                                       */
 /*                                                                   */
-/*      g++ a1q2main.cpp -std=c++0x                                */
+/*      g++ a1q2main.cpp -std=c++0x                                  */
 /*                                                                   */
+/* v 1.1: fixed test for move                                        */
 /*********************************************************************/
 
 #include "sortedlist.h"
