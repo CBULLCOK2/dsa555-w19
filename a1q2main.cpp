@@ -1,11 +1,12 @@
 /*********************************************************************/
 /*                                                                   */
 /* Tester for a sorted list                                      	 */
-/* Version 1.0                                                       */
+/* Version 1.1                                                       */
 /* To compile:                                                       */
 /*                                                                   */
-/*      g++ a1q2main.cpp -std=c++0x                                */
+/*      g++ a1q2main.cpp -std=c++0x                                  */
 /*                                                                   */
+/* v 1.1: fixed test for move                                        */
 /*********************************************************************/
 
 #include "sortedlist.h"
@@ -585,10 +586,7 @@ int main(void){
 			printLists(recCopy3,mirror,15);
 			#endif
 		}
-		if(passtest && it != it2){
-			passtest = false;
-			cout << "Error 15b: Move constructor is suppose to \"steal\" the data from rhs" << endl;
-		}
+
 	}
 
 	if(passtest){
@@ -605,10 +603,7 @@ int main(void){
 			printLists(recCopy3,mirror,15);
 			#endif
 		}
-		if(passtest && it != it2){
-			passtest = false;
-			cout << "Error 16b: Move constructor is suppose to \"steal\" the data from rhs" << endl;
-		}
+
 	}
 	if(passtest){
 		numPassed++;
